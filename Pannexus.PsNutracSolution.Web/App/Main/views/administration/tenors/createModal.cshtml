@@ -1,0 +1,23 @@
+﻿<div>
+    <form name="tenorCreateForm" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>Create New Period</span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>No of Days</label>
+                <input class="form-control" autofocus type="number" name="TenorInDays" ng-model="vm.tenor.tenorInDays" required />
+            </div>
+            <div class="form-group">
+                <label>Active:</label>
+                <input type="checkbox" name="IsActive" ng-model="vm.tenor.isActive" class="checkbox-inline" /> 
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
+            <button type="submit" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="tenorCreateForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        </div>
+    </form>
+</div>

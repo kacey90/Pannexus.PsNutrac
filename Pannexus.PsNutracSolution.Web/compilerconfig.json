@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "App/Main/colors.css",
+    "inputFile": "App/Main/colors.less"
+  },
+  {
+    "outputFile": "App/Main/views/administration/schemes/index.css",
+    "inputFile": "App/Main/views/administration/schemes/index.less"
+  }
+]

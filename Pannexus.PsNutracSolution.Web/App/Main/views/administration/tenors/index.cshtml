@@ -1,0 +1,24 @@
+﻿<div ng-controller="app.views.tenors.index as vm">
+    <h1>Tenors</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <button ng-click="vm.openNewTenorModal()" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> New Tenor</button>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Days</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="tenor in vm.tenors">
+                        <td>{{tenor.id}}</td>
+                        <td>{{tenor.tenorInDays}}</td>
+                        <td><a class="btn btn-sm btn-info" ng-href="#/tenors/{{tenor.id}}">Details <i class="fa fa-arrow-circle-right"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+﻿<div ng-controller="app.views.schemes.newScheme as vm">
+    <h2>
+        <span>New Scheme</span>
+    </h2>
+    <hr />
+    <form name="newSchemeForm" role="form" novalidate class="form-validation">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Scheme Code</label>
+                        <input type="text" name="SchemeCode" ng-model="vm.scheme.schemeCode" class="form-control" autofocus />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Scheme Name</label>
+                        <input type="text" name="schemeName" ng-model="vm.scheme.schemeName" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Crop</label>
+                        <ui-select ng-model="vm.scheme.cropId">
+                            <ui-select-match placeholder="Select Crop">
+                                <span ng-bind="$select.selected.name"></span>
+                            </ui-select-match>
+                            <ui-select-choices repeat="t.id as t in (vm.crops | filter: $select.search) track by t.name">
+                                <span ng-bind-html="t.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Total Units</label>
+                        <input type="number" name="TotalSchemeUnits" ng-model="vm.scheme.totalSchemeUnits" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Value Per Unit</label>
+                        <input type="number" name="ValuePerUnit" ng-model="vm.scheme.valuePerUnit" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Return rate (%)</label>
+                        <input type="number" name="ReturnRate" ng-model="vm.scheme.returnRate" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Floor Investment Unit</label>
+                        <input type="number" name="FloorInvestmentUnit" ng-model="vm.scheme.floorInvestUnit" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Ceiling Investment Unit</label>
+                        <input type="number" name="CeilingInvestmentUnit" ng-model="vm.scheme.ceilingInvestUnit" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Tenor</label>
+                        <ui-select ng-model="vm.scheme.tenorId">
+                            <ui-select-match placeholder="Select tenor">
+                                <span ng-bind="$select.selected.tenorInDays"></span>
+                            </ui-select-match>
+                            <ui-select-choices repeat="t.id as t in (vm.tenors | filter: $select.search) track by t.tenorInDays">
+                                <span ng-bind-html="t.tenorInDays | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="datetime" name="SchemeStartDate" ng-model="vm.scheme.schemeStartDate" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Payment Period</label>
+                        <ui-select ng-model="vm.scheme.paymentPeriodId">
+                            <ui-select-match placeholder="Select Payment Period">
+                                <span ng-bind="$select.selected.periodInDays"></span>
+                            </ui-select-match>
+                            <ui-select-choices repeat="t.id as t in (vm.paymentPeriods | filter: $select.search) track by t.periodInDays">
+                                <span ng-bind-html="t.periodInDays | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Active</label>
+                        <input type="checkbox" name="IsActive" ng-model="vm.scheme.isActive" class="checkbox-inline" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-9">
+                    <input id="btnSave" ng-disabled="newSchemeForm.$invalid" ng-click="vm.save()" class="btn btn-sm btn-primary btn-flat pull-left" type="submit" value="Save" />
+                    <a href="#/schemes" class="btn btn-sm btn-default btn-flat pull-left">Close</a>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</div>
