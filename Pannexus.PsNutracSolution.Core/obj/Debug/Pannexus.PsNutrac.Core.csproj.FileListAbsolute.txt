@@ -29,3 +29,34 @@ C:\My Solutions\PsNutracSolutionNett\SampleLTE.Core\bin\Debug\System.Collections
 C:\My Solutions\PsNutracSolutionNett\SampleLTE.Core\obj\Debug\Pannexus.PsNutrac.Core.csprojResolveAssemblyReference.cache
 C:\My Solutions\PsNutracSolutionNett\SampleLTE.Core\obj\Debug\Pannexus.PsNutrac.Core.dll
 C:\My Solutions\PsNutracSolutionNett\SampleLTE.Core\obj\Debug\Pannexus.PsNutrac.Core.pdb
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Pannexus.PsNutrac.Core.dll.config
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Pannexus.PsNutrac.Core.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Pannexus.PsNutrac.Core.pdb
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Abp.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Abp.Zero.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Castle.Core.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Castle.Facilities.Logging.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Castle.Windsor.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Newtonsoft.Json.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Nito.AsyncEx.Concurrent.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Nito.AsyncEx.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Nito.AsyncEx.Enlightenment.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\System.Collections.Immutable.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\System.Linq.Dynamic.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Abp.pdb
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Abp.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Abp.Zero.pdb
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Abp.Zero.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Castle.Core.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Castle.Facilities.Logging.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Castle.Windsor.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Newtonsoft.Json.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Nito.AsyncEx.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Nito.AsyncEx.Concurrent.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\Nito.AsyncEx.Enlightenment.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\bin\Debug\System.Collections.Immutable.xml
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\obj\Debug\Pannexus.PsNutrac.Core.csprojResolveAssemblyReference.cache
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\obj\Debug\Pannexus.PsNutrac.Core.dll
+C:\projects\PsNutrac\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Core\obj\Debug\Pannexus.PsNutrac.Core.pdb
