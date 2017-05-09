@@ -158,11 +158,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SampleLTE.Application\Pannexus.PsNutrac.Application.csproj">
+    <ProjectReference Include="..\Pannexus.PsNutracSolution.Application\Pannexus.PsNutrac.Application.csproj">
       <Project>{edf5d964-4c0f-4f19-b674-58a38a5e5401}</Project>
       <Name>Pannexus.PsNutrac.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SampleLTE.Core\Pannexus.PsNutrac.Core.csproj">
+    <ProjectReference Include="..\Pannexus.PsNutracSolution.Core\Pannexus.PsNutrac.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Pannexus.PsNutrac.Core</Name>
     </ProjectReference>

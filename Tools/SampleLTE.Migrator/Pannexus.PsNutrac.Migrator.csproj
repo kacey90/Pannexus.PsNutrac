@@ -144,12 +144,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SampleLTE.Core\Pannexus.PsNutrac.Core.csproj">
-      <Project>{17298EA0-AF73-4F30-B6F1-2066100D7D74}</Project>
+    <ProjectReference Include="..\..\Pannexus.PsNutracSolution.Core\Pannexus.PsNutrac.Core.csproj">
+      <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Pannexus.PsNutrac.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SampleLTE.EntityFramework\Pannexus.PsNutrac.EntityFramework.csproj">
-      <Project>{3979F157-DEB0-4878-AB1D-4CEF6B5A1300}</Project>
+    <ProjectReference Include="..\..\Pannexus.PsNutracSolution.EntityFramework\Pannexus.PsNutrac.EntityFramework.csproj">
+      <Project>{3979f157-deb0-4878-ab1d-4cef6b5a1300}</Project>
       <Name>Pannexus.PsNutrac.EntityFramework</Name>
     </ProjectReference>
   </ItemGroup>

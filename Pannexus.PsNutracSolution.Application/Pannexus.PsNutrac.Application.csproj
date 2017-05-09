@@ -175,7 +175,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SampleLTE.Core\Pannexus.PsNutrac.Core.csproj">
+    <ProjectReference Include="..\Pannexus.PsNutracSolution.Core\Pannexus.PsNutrac.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Pannexus.PsNutrac.Core</Name>
     </ProjectReference>

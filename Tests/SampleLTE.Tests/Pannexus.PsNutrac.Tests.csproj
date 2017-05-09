@@ -177,21 +177,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SampleLTE.Application\Pannexus.PsNutrac.Application.csproj">
-      <Project>{EDF5D964-4C0F-4F19-B674-58A38A5E5401}</Project>
-      <Name>Pannexus.PsNutrac.Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SampleLTE.Core\Pannexus.PsNutrac.Core.csproj">
-      <Project>{17298EA0-AF73-4F30-B6F1-2066100D7D74}</Project>
-      <Name>Pannexus.PsNutrac.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SampleLTE.EntityFramework\Pannexus.PsNutrac.EntityFramework.csproj">
-      <Project>{3979F157-DEB0-4878-AB1D-4CEF6B5A1300}</Project>
-      <Name>Pannexus.PsNutrac.EntityFramework</Name>
-    </ProjectReference>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <ProjectReference Include="..\..\Pannexus.PsNutracSolution.Application\Pannexus.PsNutrac.Application.csproj">
+      <Project>{edf5d964-4c0f-4f19-b674-58a38a5e5401}</Project>
+      <Name>Pannexus.PsNutrac.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pannexus.PsNutracSolution.Core\Pannexus.PsNutrac.Core.csproj">
+      <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
+      <Name>Pannexus.PsNutrac.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pannexus.PsNutracSolution.EntityFramework\Pannexus.PsNutrac.EntityFramework.csproj">
+      <Project>{3979f157-deb0-4878-ab1d-4cef6b5a1300}</Project>
+      <Name>Pannexus.PsNutrac.EntityFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
