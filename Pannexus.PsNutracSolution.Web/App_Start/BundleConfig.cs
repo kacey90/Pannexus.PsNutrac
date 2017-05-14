@@ -72,6 +72,14 @@ namespace Pannexus.PsNutrac.Web
                     "~/Scripts/select.min.js"
                 ));
 
+            //ui bootstrap
+            bundles.Add(
+                new ScriptBundle("~/Scripts/UIBootstrap/js").Include(
+                        "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js",
+                        "~/Scripts/angular-ui/ui-bootstrap.min.js"
+                    )
+                );
+
             //APPLICATION RESOURCES
 
             //~/Bundles/App/Main/css
@@ -86,6 +94,8 @@ namespace Pannexus.PsNutrac.Web
                     .IncludeDirectory("~/Common/Scripts", "*.js", true)
                     .IncludeDirectory("~/App/Main", "*.js", true)
                 );
+
+            
         }
     }
 }

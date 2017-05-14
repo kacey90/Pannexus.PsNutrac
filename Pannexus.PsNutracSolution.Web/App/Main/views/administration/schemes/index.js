@@ -21,6 +21,17 @@
                 return (abp.clock.now >= scheme.bidOpenDate && abp.clock.now <= scheme.bidCloseDate)
             }
 
+            vm.biddingStatusCss = function (scheme) {
+                if (scheme.biddingStatus === "New") {
+                    return "text-primary";
+                }
+                else if (scheme.biddingStatus === "Bidding: Opened") {
+                    return "text-success";
+                }
+                else
+                    return "text-danger";
+            }
+
             getSchemes();
         }
     ]);

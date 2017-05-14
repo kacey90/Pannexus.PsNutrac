@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using Abp.Timing;
 using Pannexus.PsNutrac.Crops;
 using Pannexus.PsNutrac.Investments;
 using Pannexus.PsNutrac.Payments;
@@ -20,7 +21,7 @@ namespace Pannexus.PsNutrac.Schemes
             NoOfUniqueInvestments = 0;
 
             Investments = new HashSet<Investment>();
-            SchemePaymentDays = new HashSet<SchemePaymentDate>();
+            SchemePaymentDays = new List<SchemePaymentDate>();
             Payments = new HashSet<Payment>();
         }
 
@@ -101,6 +102,20 @@ namespace Pannexus.PsNutrac.Schemes
         public virtual ICollection<Investment> Investments { get; set; }
         public virtual ICollection<SchemePaymentDate> SchemePaymentDays { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }
+
+        #endregion
+
+        #region Utility Methods
+
+        public bool IsSchemeConcluded()
+        {
+            return SchemeMaturityDate < Clock.Now;
+        }
+
+        public bool IsBiddingAllowed()
+        {
+            return Clock.Now >= BidOpenDate && Clock.Now <= BidCloseDate;
+        }
 
         #endregion
     }

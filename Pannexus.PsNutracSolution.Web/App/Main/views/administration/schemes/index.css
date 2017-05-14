@@ -36,6 +36,9 @@
   right: 22px;
   top: 10px;
 }
+#EventsIndex .event-list-item .event-body .scheme-status {
+  position: absolute;
+}
 #EventsIndex .event-list-item:hover .event-body {
   background-color: #dadada;
 }

@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201705071940305_ModifiedDB2.Designer.cs">
       <DependentUpon>201705071940305_ModifiedDB2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705132240358_changedInvestment.cs" />
+    <Compile Include="Migrations\201705132240358_changedInvestment.Designer.cs">
+      <DependentUpon>201705132240358_changedInvestment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SampleLTEDataModule.cs" />
@@ -221,7 +225,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SampleLTE.Core\Pannexus.PsNutrac.Core.csproj">
+    <ProjectReference Include="..\Pannexus.PsNutracSolution.Core\Pannexus.PsNutrac.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Pannexus.PsNutrac.Core</Name>
     </ProjectReference>
@@ -289,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705071940305_ModifiedDB2.resx">
       <DependentUpon>201705071940305_ModifiedDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705132240358_changedInvestment.resx">
+      <DependentUpon>201705132240358_changedInvestment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

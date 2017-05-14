@@ -8,28 +8,32 @@
     </h2>
     <hr />
     <div class="row">
-        <div ng-repeat="scheme in vm.schemes" class="event-list-item col-md-6">
+        <div ng-repeat="scheme in vm.schemes" class="event-list-item col-md-4">
             <div class="event-body">
                 <h3 class="event-title">
                     {{scheme.schemeCode}}
                 </h3>
                 <p class="event-description">{{scheme.schemeName}}</p>
                 <div class="event-canceled-info">{{scheme.schemeMaturityStatus}}</div>
+                <div class="scheme-status">
+                    <em ng-class="vm.biddingStatusCss(scheme)">{{scheme.biddingStatus}}</em>
+                </div><br />
                 <div class="event-registration-info">
-                    <span ng-if="vm.isBiddingOn(scheme)">
+                    @*<span ng-if="vm.isBiddingOn(scheme)">
                         Bids are ongoing!
                     </span>
-                    <span ng-if="!vm.isBiddingOn(scheme) && scheme.bidOpenDate < vm.currentDate">
+                    <span ng-if="!vm.isBiddingOn(scheme)">
                         Bids are Closed!
-                    </span>
+                    </span>*@
+                    
                     <span ng-if="scheme.subscribedUnits < scheme.totalSchemeUnits">
-                        {{scheme.subscribedUnits}} of {{scheme.subscribedUnits}} have been subscribed for.
+                        {{scheme.subscribedUnits | number}} of {{scheme.totalSchemeUnits | number}} subscribed.
                     </span>
                 </div>
                 <div class="event-actions">
                     <a class="btn btn-sm btn-info" ng-href="#/schemes/{{scheme.id}}">Details <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-                <span class="event-date"><i class="fa fa-calendar-times-o"></i> {{scheme.creationTime | date :'dd/MM/yyyy'}}</span>
+                <span class="event-date"><i class="fa fa-calendar-times-o"></i> {{scheme.creationTime | fromNow}}</span>
             </div>
         </div>
     </div>

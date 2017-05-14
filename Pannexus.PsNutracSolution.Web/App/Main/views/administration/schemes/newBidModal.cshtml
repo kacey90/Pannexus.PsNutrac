@@ -1,0 +1,34 @@
+﻿<div>
+    <div class="modal-header">
+        <h4 class="modal-title">New Bid</h4>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">No. of Units:</label>
+                    <div class="col-lg-8">
+                        <input ng-model="vm.investment.investmentUnit" type="text" class="form-control" name="InvestmentUnit" pattern="[0-9]+([\.,][0-9]+)*" format>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Value:</label>
+                    <div class="col-lg-8" style="padding-top: 10px">
+                        <strong>{{(vm.investment.investmentUnit * vm.scheme.valuePerUnit) | currency: "N "}}</strong>
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-4 control-label">Expected ROI:</label>
+                    <div class="col-lg-8" style="padding-top: 10px">
+                        <strong>{{((vm.investment.investmentUnit * vm.scheme.valuePerUnit) + (vm.investment.investmentUnit * vm.scheme.valuePerUnit) * vm.scheme.returnRate) | currency: "N "}}</strong>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="vm.cancel()">@L("Cancel")</button>
+        <button class="btn btn-primary" ng-click="vm.save()">@L("Save")</button>
+    </div>
+</div>

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace Pannexus.PsNutrac.Schemes.Dto
 {
     [AutoMapFrom(typeof(Scheme))]
-    public class SchemeDto : FullAuditedEntityDto
+    public class SchemeDto : FullAuditedEntityDto<string>
     {
         #region Properties
 
@@ -71,9 +71,25 @@ namespace Pannexus.PsNutrac.Schemes.Dto
             {
                 var res = string.Empty;
                 if (SchemeMaturityDate < Clock.Now)
-                    res = "Scheme has Matured!";
+                    res = "Concluded!";
+                //else
+                //    res = "Scheme is Running!";
+
+                return res;
+            }
+        }
+
+        public string BiddingStatus
+        {
+            get
+            {
+                var res = string.Empty;
+                if (Clock.Now < BidOpenDate)
+                    res = "New";
+                else if (Clock.Now >= BidOpenDate && Clock.Now <= BidCloseDate)
+                    res = "Bidding: Opened";
                 else
-                    res = "Scheme is Running!";
+                    res = "Bidding: Closed";
 
                 return res;
             }

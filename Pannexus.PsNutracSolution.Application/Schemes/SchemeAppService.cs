@@ -57,19 +57,23 @@ namespace Pannexus.PsNutrac.Schemes
         {
             var scheme = input.MapTo<Scheme>();
             scheme.Id = ClassUtil.GenerateUniqueKey();
+            scheme.SchemeStartDate = scheme.SchemeStartDate.AddDays(1);
+            scheme.BidCloseDate = scheme.BidCloseDate.AddDays(1);
+            scheme.BidOpenDate = scheme.BidOpenDate.AddDays(1);
 
             // Add the scheme payment Days - I got confused as to what to do here in adding the schemePaymentDays
-            //var noPaymentDays = input.TenorInDays / input.PaymentPeriodInDays;
-            //for (int i = 0; i < noPaymentDays; i++)
-            //{
-            //    scheme.SchemePaymentDays.Add(new SchemePaymentDate
-            //    {
-            //        SchemeId = scheme.Id,
-            //        PaymentDate = scheme.SchemeStartDate.AddDays(noPaymentDays),
-            //        ExpectedTotalPayment = 0,
-            //        ActualTotalPayment = 0
-            //    });
-            //}
+            var noPaymentDays = input.TenorInDays / input.PaymentPeriodInDays;
+            for (int i = 1; i <= noPaymentDays; i++)
+            {
+                scheme.SchemePaymentDays.Add(new SchemePaymentDate
+                {
+                    Id = ClassUtil.GenerateUniqueKey(),
+                    SchemeId = scheme.Id,
+                    PaymentDate = scheme.SchemeStartDate.AddDays(input.PaymentPeriodInDays * i),
+                    ExpectedTotalPayment = scheme.SubscriptionCeiling + (scheme.SubscriptionCeiling * decimal.Parse(scheme.ReturnRate.ToString())),
+                    ActualTotalPayment = 0
+                });
+            }
             //the above was giving this error: Object reference not set to an instance of an object.
             await _schemeRepo.InsertAsync(scheme);
         }
@@ -103,7 +107,7 @@ namespace Pannexus.PsNutrac.Schemes
                 //.Include(s => s.Investments)
                 //.Include(s => s.Payments)
                 .WhereIf(!input.Filter.IsNullOrWhiteSpace(), s => s.SchemeCode.Equals(input.Filter) || s.SchemeName.Contains(input.Filter))
-                .OrderBy(s => s.Id)
+                .OrderByDescending(s => s.CreationTime)
                 .PageBy(input).ToList();
 
             return new PagedResultDto<SchemeDto>

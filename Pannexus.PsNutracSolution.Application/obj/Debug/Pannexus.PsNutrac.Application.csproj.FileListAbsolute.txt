@@ -77,3 +77,4 @@ C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolut
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Application\bin\Debug\System.Collections.Immutable.xml
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Application\obj\Debug\Pannexus.PsNutrac.Application.dll
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Application\obj\Debug\Pannexus.PsNutrac.Application.pdb
+C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.Application\obj\Debug\Pannexus.PsNutrac.Application.csprojResolveAssemblyReference.cache

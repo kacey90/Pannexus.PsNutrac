@@ -6,5 +6,9 @@
   {
     "outputFile": "App/Main/views/administration/schemes/index.css",
     "inputFile": "App/Main/views/administration/schemes/index.less"
+  },
+  {
+    "outputFile": "App/Main/numberFormat.css",
+    "inputFile": "App/Main/numberFormat.less"
   }
 ]

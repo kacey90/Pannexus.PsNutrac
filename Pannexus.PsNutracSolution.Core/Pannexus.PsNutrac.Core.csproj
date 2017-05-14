@@ -99,7 +99,9 @@
     <Compile Include="Accounts\WalletTransaction.cs" />
     <Compile Include="Banks\Bank.cs" />
     <Compile Include="Crops\Crop.cs" />
+    <Compile Include="Investments\IInvestmentPolicy.cs" />
     <Compile Include="Investments\Investment.cs" />
+    <Compile Include="Investments\InvestmentPolicy.cs" />
     <Compile Include="Payments\Payment.cs" />
     <Compile Include="Payments\PaymentPeriod.cs" />
     <Compile Include="SampleLTEConsts.cs" />

@@ -37,7 +37,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Total Units</label>
-                        <input type="number" name="TotalSchemeUnits" ng-model="vm.scheme.totalSchemeUnits" class="form-control" />
+                        <input type="text" name="TotalSchemeUnits" ng-model="vm.scheme.totalSchemeUnits" class="form-control" pattern="[0-9]+([\.,][0-9]+)*" format />
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Value Per Unit</label>
-                        <input type="number" name="ValuePerUnit" ng-model="vm.scheme.valuePerUnit" class="form-control" />
+                        <input type="text" name="ValuePerUnit" ng-model="vm.scheme.valuePerUnit" currency-input size="30" class="form-control" />
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -59,13 +59,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Floor Investment Unit</label>
-                        <input type="number" name="FloorInvestmentUnit" ng-model="vm.scheme.floorInvestUnit" class="form-control" />
+                        <input type="text" name="FloorInvestmentUnit" ng-model="vm.scheme.floorInvestUnit" class="form-control" pattern="[0-9]+([\.,][0-9]+)*" format />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Ceiling Investment Unit</label>
-                        <input type="number" name="CeilingInvestmentUnit" ng-model="vm.scheme.ceilingInvestUnit" class="form-control" />
+                        <input type="text" name="CeilingInvestmentUnit" ng-model="vm.scheme.ceilingInvestUnit" class="form-control" pattern="[0-9]+([\.,][0-9]+)*" format />
                     </div>
                 </div>
             </div>
@@ -82,13 +82,37 @@
                                 <span ng-bind-html="t.tenorInDays | highlight: $select.search"></span>
                             </ui-select-choices>
                         </ui-select>
-                        
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="input-group">
                         <label>Start Date</label>
-                        <input type="datetime" name="SchemeStartDate" ng-model="vm.scheme.schemeStartDate" class="form-control" />
+                        <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.scheme.schemeStartDate" datepickerLocaldate is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                @*<input type="datetime" name="SchemeStartDate" ng-model="vm.scheme.schemeStartDate" class="form-control" />*@
+                   
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <label>Bid Start Date</label>
+                        <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.scheme.bidOpenDate" is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open3()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <label>Bid End Date</label>
+                        <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.scheme.bidCloseDate" is-open="popup4.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open4()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
                     </div>
                 </div>
             </div>

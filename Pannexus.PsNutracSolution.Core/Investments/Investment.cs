@@ -40,7 +40,7 @@ namespace Pannexus.PsNutrac.Investments
             get { return InvestmentStartDate.AddDays(TenorInDays); }
         }
 
-        public decimal ReturnRate { get; set; } // From The Scheme.ReturnRate
+        public float ReturnRate { get; set; } // From The Scheme.ReturnRate
 
         [MaxLength(20), Required]
         public string TenorID { get; set; }
@@ -54,7 +54,7 @@ namespace Pannexus.PsNutrac.Investments
 
         public decimal ExpectedTotalReturn  //InvestmentAmount * returnRate + InvestmentAmount
         {
-            get { return InvestmentAmount + InvestmentAmount * ReturnRate; }
+            get { return InvestmentAmount + InvestmentAmount * decimal.Parse(ReturnRate.ToString()); }
         }
 
         public double NoOfTotalPayments { get; set; } // how is this deduced

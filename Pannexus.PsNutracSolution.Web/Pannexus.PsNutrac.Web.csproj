@@ -327,6 +327,7 @@
     <Content Include="App\Main\views\administration\crops\index.js" />
     <Content Include="App\Main\views\administration\payments\paymentPeriodModal.js" />
     <Content Include="App\Main\views\administration\payments\paymentPeriods.js" />
+    <Content Include="App\Main\views\administration\schemes\details.js" />
     <Content Include="App\Main\views\administration\schemes\index.css">
       <DependentUpon>index.less</DependentUpon>
     </Content>
@@ -334,11 +335,13 @@
     <Content Include="App\Main\views\administration\schemes\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
+    <Content Include="App\Main\views\administration\schemes\newBidModal.js" />
     <Content Include="App\Main\views\administration\schemes\newScheme.js" />
     <Content Include="App\Main\views\administration\tenors\createModal.js" />
     <Content Include="App\Main\views\administration\tenors\index.js" />
     <Content Include="App\Main\views\directives\autoFocus.js" />
     <Content Include="App\Main\views\directives\enterKey.js" />
+    <Content Include="App\Main\views\directives\momentjs-filters.js" />
     <Content Include="App\Main\views\layout\header.js" />
     <Content Include="App\Main\views\layout\layout.js" />
     <Content Include="App\Main\views\home\home.js" />
@@ -491,6 +494,8 @@
     <Content Include="App\Main\colors.less" />
     <Content Include="App\Main\views\administration\schemes\index.less" />
     <Content Include="App\Main\views\administration\schemes\newScheme.cshtml" />
+    <Content Include="App\Main\views\administration\schemes\detail.cshtml" />
+    <Content Include="App\Main\views\administration\schemes\newBidModal.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

@@ -61,6 +61,11 @@
                         templateUrl: '/App/Main/views/administration/schemes/newScheme.cshtml',
                         menu: 'Schemes' //Matches to name of 'Users' menu in SampleDemoNavigationProvider
                     })
+                    .state('schemeDetails', {
+                        url: '/schemes/:id',
+                        templateUrl: '/App/Main/views/administration/schemes/detail.cshtml',
+                        menu: 'Schemes' //Matches to name of 'Users' menu in SampleDemoNavigationProvider
+                    })
 
                 $urlRouterProvider.otherwise('/');
             }
