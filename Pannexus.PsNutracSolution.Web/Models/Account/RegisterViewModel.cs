@@ -36,6 +36,35 @@ namespace Pannexus.PsNutrac.Web.Models.Account
         [DisableAuditing]
         public string Password { get; set; }
 
+        [MaxLength(255), DisableAuditing]
+        [Compare("Password", ErrorMessage = "Password doesn't match.")]
+        public string ConfirmPassword { get; set; }
+
+
+        [MaxLength(7), Required]
+        public string Gender { get; set; }
+
+        [MaxLength(150)]
+        public string Occupation { get; set; }
+
+        [MaxLength(100)]
+        public string Designation { get; set; }
+
+        [MaxLength(100)]
+        public string City { get; set; }
+
+        [MaxLength(100)]
+        public string State { get; set; }
+
+        [MaxLength(100), Required]
+        public string Bank { get; set; }
+
+        [MaxLength(20)]
+        public string SortCode { get; set; }
+
+        [MaxLength(100), Required]
+        public string AccountNumber { get; set; }
+
         public bool IsExternalLogin { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

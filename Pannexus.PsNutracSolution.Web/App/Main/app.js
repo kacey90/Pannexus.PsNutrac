@@ -25,8 +25,23 @@
                         url: '/users',
                         templateUrl: '/App/Main/views/users/index.cshtml',
                         menu: 'Users' //Matches to name of 'Users' menu in Pannexus.PsNutracNavigationProvider
+                    })
+                    .state('schemes', {
+                        url: '/schemes',
+                        templateUrl: '/App/Main/views/schemes/index.cshtml',
+                        menu: 'Schemes' //Matches to name of 'Users' menu in SampleDemoNavigationProvider
+                    })
+                    .state('newScheme', {
+                        url: '/schemes/newScheme',
+                        templateUrl: '/App/Main/views/schemes/newScheme.cshtml',
+                        menu: 'Schemes' //Matches to name of 'Users' menu in SampleDemoNavigationProvider
+                    })
+                    .state('schemeDetails', {
+                        url: '/schemes/:id',
+                        templateUrl: '/App/Main/views/schemes/detail.cshtml',
+                        menu: 'Schemes' //Matches to name of 'Users' menu in SampleDemoNavigationProvider
                     });
-                $urlRouterProvider.otherwise('/users');
+                $urlRouterProvider.otherwise('/');
             }
 
             if (abp.auth.hasPermission('Pages.Admin')) {
@@ -51,21 +66,7 @@
                         templateUrl: '/App/Main/views/administration/tenors/index.cshtml',
                         menu: 'Tenors' //Matches to name of 'Users' menu in SampleDemoNavigationProvider
                     })
-                    .state('schemes', {
-                        url: '/schemes',
-                        templateUrl: '/App/Main/views/administration/schemes/index.cshtml',
-                        menu: 'Schemes' //Matches to name of 'Users' menu in SampleDemoNavigationProvider
-                    })
-                    .state('newScheme', {
-                        url: '/schemes/newScheme',
-                        templateUrl: '/App/Main/views/administration/schemes/newScheme.cshtml',
-                        menu: 'Schemes' //Matches to name of 'Users' menu in SampleDemoNavigationProvider
-                    })
-                    .state('schemeDetails', {
-                        url: '/schemes/:id',
-                        templateUrl: '/App/Main/views/administration/schemes/detail.cshtml',
-                        menu: 'Schemes' //Matches to name of 'Users' menu in SampleDemoNavigationProvider
-                    })
+                    
 
                 $urlRouterProvider.otherwise('/');
             }

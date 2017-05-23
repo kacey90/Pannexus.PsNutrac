@@ -95,9 +95,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accounts\AccountChart.cs" />
+    <Compile Include="Accounts\IWalletManager.cs" />
     <Compile Include="Accounts\Wallet.cs" />
+    <Compile Include="Accounts\WalletManager.cs" />
     <Compile Include="Accounts\WalletTransaction.cs" />
     <Compile Include="Banks\Bank.cs" />
+    <Compile Include="Banks\BankManager.cs" />
+    <Compile Include="Banks\IBankManager.cs" />
     <Compile Include="Crops\Crop.cs" />
     <Compile Include="Investments\IInvestmentPolicy.cs" />
     <Compile Include="Investments\Investment.cs" />
@@ -120,7 +124,9 @@
     <Compile Include="Authorization\Roles\Role.cs" />
     <Compile Include="Authorization\Roles\RoleManager.cs" />
     <Compile Include="Authorization\Roles\RoleStore.cs" />
+    <Compile Include="Schemes\ISchemeCreationPolicy.cs" />
     <Compile Include="Schemes\Scheme.cs" />
+    <Compile Include="Schemes\SchemeCreationPolicy.cs" />
     <Compile Include="Schemes\SchemePaymentDate.cs" />
     <Compile Include="Tenors\Tenor.cs" />
     <Compile Include="Users\User.cs" />

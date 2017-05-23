@@ -6,9 +6,170 @@
 @section Scripts{
     <script type="text/javascript" src="~/Views/Account/Register.js"></script>
 }
+
 <div class="container">
-    <div id="LoginArea" class="row">
-        <div class="col-lg-12">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form role="form" class="register-form" action="@(Url.Action("Register","Account"))" method="POST">
+                @Html.AntiForgeryToken()
+                <h2>Register</h2>
+                <hr class="colorgraph">
+                @if (@ViewBag.ErrorMessage != null)
+                {
+                    <div class="alert alert-danger">
+                        <i class="fa fa-warning"></i> @ViewBag.ErrorMessage
+                    </div>
+                }
+
+                @if (ViewBag.IsMultiTenancyEnabled)
+                {
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" name="TenancyName" placeholder="@L("TenancyName")" value="@Model.TenancyName" required maxlength="@Pannexus.PsNutrac.MultiTenancy.Tenant.MaxTenancyNameLength">
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="First Name" required maxlength="@Pannexus.PsNutrac.Users.User.MaxNameLength">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Surname" value="@Model.Surname" placeholder="Last Name" required maxlength="@Pannexus.PsNutrac.Users.User.MaxSurnameLength">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <select name="Gender" class="form-control">
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-5 col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Occupation" value="@Model.Occupation" placeholder="Occupation" required maxlength="100">
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Occupation" value="@Model.Designation" placeholder="Designation" required maxlength="100">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="City" value="@Model.City" placeholder="City" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="State" value="@Model.State" placeholder="State" maxlength="100">
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <h4>Bank Details</h4>
+                <hr />
+
+                <input type="hidden" name="IsExternalLogin" value="@Model.IsExternalLogin.ToString()" />
+
+                <div class="form-group">
+                    @*@Html.DropDownList("Banks", "--Select your Bank--", new { @class = "form-control" })*@
+                    @Html.DropDownListFor(x => x.Bank, (IEnumerable<SelectListItem>)ViewBag.Banks, "--Select your Bank--", new { @class = "form-control"})
+                    @Html.ValidationMessageFor(x => x.Bank);
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="AccountNumber" value="@Model.AccountNumber" placeholder="Account Number" maxlength="20">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="SortCode" value="@Model.SortCode" placeholder="Sort Code" maxlength="20">
+                        </div>
+                    </div>
+                </div><hr />
+
+                <h4>User Credentials</h4><hr />
+
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="EmailAddress" value="@Model.EmailAddress" placeholder="@L("EmailAddress")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxEmailAddressLength">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="UserName" value="@Model.UserName" placeholder="@L("UserName")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxUserNameLength">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxPlainPasswordLength">
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="ConfirmPassword" placeholder="Confirm Password" required maxlength="@Pannexus.PsNutrac.Users.User.MaxPlainPasswordLength">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-3 col-md-3">
+                        <span class="button-checkbox">
+                            <button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
+                            <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
+                        </span>
+                    </div>
+                    <div class="col-xs-8 col-sm-9 col-md-9">
+                        By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+                    </div>
+                </div>
+
+                <hr class="colorgraph">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6"><button type="submit" class="btn btn-primary btn-block" tabindex="7"><i class="fa fa-sign-in"></i> Register</button></div>
+                    <div class="col-xs-12 col-md-6"><a href="@Url.Action("Login")" class="btn btn-success btn-block"><i class="fa fa-sign-in"></i> Sign In</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+@*<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
             <div class="well bs-component">
                 <form class="form-horizontal register-form" action="@(Url.Action("Register","Account"))" method="POST">
                     @Html.AntiForgeryToken()
@@ -31,38 +192,122 @@
                             </div>
                         }
 
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="First Name" required maxlength="@Pannexus.PsNutrac.Users.User.MaxNameLength">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="Surname" value="@Model.Surname" placeholder="Last Name" required maxlength="@Pannexus.PsNutrac.Users.User.MaxSurnameLength">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <div class="form-group">
+                                    <select  name="Gender" class="form-control">
+                                        <option value="Female">Female</option>
+                                        <option value="Male">Male</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="Occupation" value="@Model.Occupation" placeholder="Occupation" required maxlength="100">
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="Occupation" value="@Model.Occupation" placeholder="Designation" required maxlength="100">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="City" value="@Model.City" placeholder="Designation" maxlength="100">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="City" value="@Model.State" placeholder="Designation" maxlength="100">
+                                </div>
+                            </div>
+                        </div>
+                        <hr /><br />
+
+                        <legend>Bank Details</legend>
+
+
                         <input type="hidden" name="IsExternalLogin" value="@Model.IsExternalLogin.ToString()" />
 
                         <div class="form-group">
-                            <div class="col-lg-12">
-                                <input type="text" class="form-control" name="Name" value="@Model.Name" placeholder="@L("Name")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxNameLength">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <select name="Bank" class="form-control">
+                                    <option value="Female">Female</option>
+                                    <option value="Male">Male</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="AccountNumber" value="@Model.AccountNumber" placeholder="Account Number" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="SortCode" value="@Model.SortCode" placeholder="Sort Code" maxlength="20">
+                                </div>
+                            </div>
+                        </div><hr /><br />
+
+                        <legend>User Credentials</legend>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="EmailAddress" value="@Model.EmailAddress" placeholder="@L("EmailAddress")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxEmailAddressLength">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="UserName" value="@Model.UserName" placeholder="@L("UserName")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxUserNameLength">
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxPlainPasswordLength">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" name="ConfirmPassword" placeholder="Confirm Password" required maxlength="@Pannexus.PsNutrac.Users.User.MaxPlainPasswordLength">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <span class="button-checkbox">
+                                    <button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
+                                    <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
+                                </span>
+                            </div>
+                            <div class="col-xs-9 col-sm-9 col-md-9">
+                                By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input type="text" class="form-control" name="Surname" value="@Model.Surname" placeholder="@L("Surname")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxSurnameLength">
-                            </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-6"><input type="submit" value="Register" class="btn btn-primary" tabindex="7"></div>
+                            <div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success">Sign In</a></div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input type="email" class="form-control" name="EmailAddress" value="@Model.EmailAddress" placeholder="@L("EmailAddress")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxEmailAddressLength">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input type="text" class="form-control" name="UserName" value="@Model.UserName" placeholder="@L("UserName")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxUserNameLength">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input type="password" class="form-control" name="Password" placeholder="@L("Password")" required maxlength="@Pannexus.PsNutrac.Users.User.MaxPlainPasswordLength">
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <button type="submit" id="RegisterButton" class="btn btn-primary"><i class="fa fa-sign-in"></i> @L("Register")</button>
@@ -73,4 +318,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@

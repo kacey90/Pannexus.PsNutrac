@@ -19,12 +19,14 @@ namespace Pannexus.PsNutrac.Schemes
     {
         private readonly IRepository<Scheme, string> _schemeRepo;
         private readonly IRepository<Tenor, string> _tenorRepo;
+        private readonly ISchemeCreationPolicy _schemeCreationPolicy;
 
         public SchemeAppService(IRepository<Scheme, string> schemeRepo,
-            IRepository<Tenor, string> tenorRepo)
+            IRepository<Tenor, string> tenorRepo, ISchemeCreationPolicy schemeCreationPolicy)
         {
             _schemeRepo = schemeRepo;
             _tenorRepo = tenorRepo;
+            _schemeCreationPolicy = schemeCreationPolicy;
         }
 
         //public async Task CreateAsync(CreateSchemeInput input)
@@ -60,6 +62,8 @@ namespace Pannexus.PsNutrac.Schemes
             scheme.SchemeStartDate = scheme.SchemeStartDate.AddDays(1);
             scheme.BidCloseDate = scheme.BidCloseDate.AddDays(1);
             scheme.BidOpenDate = scheme.BidOpenDate.AddDays(1);
+
+            _schemeCreationPolicy.CheckSchemeCreationAttemptPolicy(scheme);
 
             // Add the scheme payment Days - I got confused as to what to do here in adding the schemePaymentDays
             var noPaymentDays = input.TenorInDays / input.PaymentPeriodInDays;

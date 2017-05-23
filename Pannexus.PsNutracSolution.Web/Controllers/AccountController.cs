@@ -23,6 +23,13 @@ using Pannexus.PsNutrac.Web.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Abp.Domain.Repositories;
+using Pannexus.PsNutrac.Banks;
+using Pannexus.PsNutrac.EntityFramework;
+using Pannexus.PsNutrac.Banks.Dto;
+using Pannexus.PsNutrac.Accounts;
+using Pannexus.PsNutrac.Helper;
+using Abp.Timing;
 
 namespace Pannexus.PsNutrac.Web.Controllers
 {
@@ -34,6 +41,8 @@ namespace Pannexus.PsNutrac.Web.Controllers
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly IMultiTenancyConfig _multiTenancyConfig;
         private readonly LogInManager _logInManager;
+        private readonly IBankManager _bankManager;
+        private readonly IWalletManager _walletManager;
 
         private IAuthenticationManager AuthenticationManager
         {
@@ -49,7 +58,8 @@ namespace Pannexus.PsNutrac.Web.Controllers
             RoleManager roleManager,
             IUnitOfWorkManager unitOfWorkManager,
             IMultiTenancyConfig multiTenancyConfig,
-            LogInManager logInManager)
+            LogInManager logInManager, IBankManager bankManager,
+            IWalletManager walletManager)
         {
             _tenantManager = tenantManager;
             _userManager = userManager;
@@ -57,6 +67,8 @@ namespace Pannexus.PsNutrac.Web.Controllers
             _unitOfWorkManager = unitOfWorkManager;
             _multiTenancyConfig = multiTenancyConfig;
             _logInManager = logInManager;
+            _bankManager = bankManager;
+            _walletManager = walletManager;
         }
 
         #region Login / Logout
@@ -164,11 +176,27 @@ namespace Pannexus.PsNutrac.Web.Controllers
             return RegisterView(new RegisterViewModel());
         }
 
+        
         private ActionResult RegisterView(RegisterViewModel model)
         {
             ViewBag.IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled;
 
+            //var context = new SampleLTEDbContext();
+            IEnumerable<SelectListItem> items = GetAllBanks().Select(b => new SelectListItem
+            {
+                Value = b.Id,
+                Text = b.BankName
+            });
+
+            ViewBag.Banks = items;
+
             return View("Register", model);
+        }
+
+        [UnitOfWork]
+        public virtual IEnumerable<BankDto> GetAllBanks()
+        {
+            return _bankManager.GetBanksList().MapTo<IEnumerable<BankDto>>();
         }
 
         [HttpPost]
@@ -198,7 +226,15 @@ namespace Pannexus.PsNutrac.Web.Controllers
                     Name = model.Name,
                     Surname = model.Surname,
                     EmailAddress = model.EmailAddress,
-                    IsActive = true
+                    IsActive = true,
+                    Gender = model.Gender,
+                    Occupation = model.Occupation,
+                    Designation = model.Designation,
+                    City = model.City,
+                    State = model.State,
+                    Bank = model.Bank,
+                    SortCode = model.SortCode,
+                    AccountNumber = model.AccountNumber
                 };
 
                 //Get external login info if possible
@@ -260,6 +296,21 @@ namespace Pannexus.PsNutrac.Web.Controllers
                 CheckErrors(await _userManager.CreateAsync(user));
                 await _unitOfWorkManager.Current.SaveChangesAsync();
 
+                //Create Wallet for user
+                await _walletManager.CreateAsync(new Wallet
+                {
+                    Id = ClassUtil.GenerateUniqueKey(),
+                    UserID = user.Id,
+                    CurrentBalance = 0,
+                    TotalTransactions = 0,
+                    NoOfCreditTransactions = 0,
+                    NoOfDebitTransactions = 0,
+                    DateOfLastTransaction = DateTime.Now,
+                    IsActive = true
+                });
+
+                await _unitOfWorkManager.Current.SaveChangesAsync();
+
                 //Directly login if possible
                 if (user.IsActive)
                 {
@@ -289,13 +340,27 @@ namespace Pannexus.PsNutrac.Web.Controllers
                     NameAndSurname = user.Name + " " + user.Surname,
                     UserName = user.UserName,
                     EmailAddress = user.EmailAddress,
-                    IsActive = user.IsActive
+                    IsActive = user.IsActive,
+                    Gender = model.Gender,
+                    Occupation = model.Occupation,
+                    Designation = model.Designation,
+                    City = model.City,
+                    State = model.State,
+                    Bank = model.Bank,
+                    SortCode = model.SortCode,
+                    AccountNumber = model.AccountNumber
                 });
             }
             catch (UserFriendlyException ex)
             {
                 ViewBag.IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled;
                 ViewBag.ErrorMessage = ex.Message;
+
+                return View("Register", model);
+            }
+            catch (Exception exc)
+            {
+                ViewBag.ErrorMessage = exc.Message;
 
                 return View("Register", model);
             }

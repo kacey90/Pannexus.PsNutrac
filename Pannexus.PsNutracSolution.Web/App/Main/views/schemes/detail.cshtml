@@ -1,0 +1,281 @@
+﻿<div ng-controller="app.views.schemes.details as vm">
+    <h2>
+        <span>Scheme Details</span>
+        <a ng-show="vm.isBiddingAllowed()" ng-click="vm.openNewBidDialog()" class="btn btn-primary btn-sm" title="Make new bid"><i class="fa fa-plus"></i> Make Bid</a>
+        <a href="#/schemes" class="btn btn-sm btn-default btn-flat"><i class="fa fa-step-backward"></i> Go back</a>
+        @*<span class="pull-right event-filters">
+                <input type="checkbox" ng-model="vm.filters.includeCanceledEvents" /> @L("ShowCanceledEvents")
+            </span>*@
+    </h2>
+    <hr />
+    <div ng-if="!vm.isAdmin()">
+        <div class="col-md-12">
+            <h3>
+                <span>Scheme info</span>
+            </h3>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Scheme Code</label>
+                    <input type="text" name="SchemeCode" disabled ng-model="vm.scheme.schemeCode" class="form-control" autofocus />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Scheme Name</label>
+                    <input type="text" name="schemeName" disabled ng-model="vm.scheme.schemeName" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Crop</label>
+                    <ui-select ng-model="vm.scheme.cropId" disabled>
+                        <ui-select-match placeholder="Select Crop">
+                            <span ng-bind="$select.selected.name"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="t.id as t in (vm.crops | filter: $select.search) track by t.name">
+                            <span ng-bind-html="t.name | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Total Units</label>
+                    <input type="text" name="TotalSchemeUnits" disabled ng-model="vm.scheme.totalSchemeUnits" class="form-control" pattern="[0-9]+([\.,][0-9]+)*" format />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Value Per Unit</label>
+                    <input type="text" name="ValuePerUnit" disabled ng-model="vm.scheme.valuePerUnit" currency-input size="30" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Return rate (%)</label>
+                    <input type="number" name="ReturnRate" disabled ng-model="vm.scheme.returnRate" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Floor Investment Unit</label>
+                    <input type="text" name="FloorInvestmentUnit" disabled ng-model="vm.scheme.floorInvestUnit" class="form-control" pattern="[0-9]+([\.,][0-9]+)*" format />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Ceiling Investment Unit</label>
+                    <input type="text" name="CeilingInvestmentUnit" disabled ng-model="vm.scheme.ceilingInvestUnit" class="form-control" pattern="[0-9]+([\.,][0-9]+)*" format />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Tenor</label>
+                    <ui-select ng-model="vm.scheme.tenorId" disabled>
+                        <ui-select-match placeholder="Select tenor">
+                            <span ng-bind="$select.selected.tenorInDays"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="t.id as t in (vm.tenors | filter: $select.search) track by t.tenorInDays">
+                            <span ng-bind-html="t.tenorInDays | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Start Date</label>
+                    {{vm.scheme.schemeStartDate | momentFormat:'DD-MMMM-YYYY'}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Bid Start Date</label>
+                    {{vm.scheme.bidOpenDate | momentFormat:'DD-MMMM-YYYY'}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Bid End Date</label>
+                    {{vm.scheme.bidCloseDate | momentFormat:'DD-MMMM-YYYY'}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Payment Period</label>
+                    <ui-select ng-model="vm.scheme.paymentPeriodId" disabled>
+                        <ui-select-match placeholder="Select Payment Period">
+                            <span ng-bind="$select.selected.periodInDays"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="t.id as t in (vm.paymentPeriods | filter: $select.search) track by t.periodInDays">
+                            <span ng-bind-html="t.periodInDays | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            @*<div class="col-md-6">
+                <div class="form-group">
+                    <label>Active</label>
+                    <input type="checkbox" name="IsActive" ng-model="vm.scheme.isActive" class="checkbox-inline" />
+                </div>
+            </div>*@
+        </div>
+    </div>
+    <div class="col-md-12" ng-if="vm.isAdmin()">
+        <h3>
+            <span>Scheme info</span>
+        </h3>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Scheme Code</label>
+                    <input type="text" name="SchemeCode" ng-disabled="!vm.allowEdit()" ng-model="vm.scheme.schemeCode" class="form-control" autofocus />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Scheme Name</label>
+                    <input type="text" name="schemeName" ng-disabled="!vm.allowEdit()" ng-model="vm.scheme.schemeName" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Crop</label>
+                    <ui-select ng-model="vm.scheme.cropId" ng-disabled="!vm.allowEdit()">
+                        <ui-select-match placeholder="Select Crop">
+                            <span ng-bind="$select.selected.name"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="t.id as t in (vm.crops | filter: $select.search) track by t.name">
+                            <span ng-bind-html="t.name | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Total Units</label>
+                    <input type="text" name="TotalSchemeUnits" ng-disabled="!vm.allowEdit()" ng-model="vm.scheme.totalSchemeUnits" class="form-control" pattern="[0-9]+([\.,][0-9]+)*" format />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Value Per Unit</label>
+                    <input type="text" name="ValuePerUnit" ng-disabled="!vm.allowEdit()" ng-model="vm.scheme.valuePerUnit" currency-input size="30" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Return rate (%)</label>
+                    <input type="number" name="ReturnRate" ng-disabled="!vm.allowEdit()" ng-model="vm.scheme.returnRate" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Floor Investment Unit</label>
+                    <input type="text" name="FloorInvestmentUnit" ng-disabled="!vm.allowEdit()" ng-model="vm.scheme.floorInvestUnit" class="form-control" pattern="[0-9]+([\.,][0-9]+)*" format />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Ceiling Investment Unit</label>
+                    <input type="text" name="CeilingInvestmentUnit" ng-disabled="!vm.allowEdit()" ng-model="vm.scheme.ceilingInvestUnit" class="form-control" pattern="[0-9]+([\.,][0-9]+)*" format />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Tenor</label>
+                    <ui-select ng-model="vm.scheme.tenorId" ng-disabled="!vm.allowEdit()">
+                        <ui-select-match placeholder="Select tenor">
+                            <span ng-bind="$select.selected.tenorInDays"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="t.id as t in (vm.tenors | filter: $select.search) track by t.tenorInDays">
+                            <span ng-bind-html="t.tenorInDays | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Start Date</label> - {{vm.scheme.schemeStartDate | momentFormat:'DD-MMMM-YYYY'}}
+                    <input type="text" class="form-control" ng-disabled="!vm.allowEdit()" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.scheme.schemeStartDate" datepickerLocaldate is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" ng-show="vm.allowEdit()" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Bid Start Date</label> - {{vm.scheme.bidOpenDate | momentFormat:'DD-MMMM-YYYY'}}
+                    <input type="text" class="form-control" ng-disabled="!vm.allowEdit()" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.scheme.bidOpenDate" is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn" >
+                        <button type="button" ng-show="vm.allowEdit()" class="btn btn-default" ng-click="open3()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Bid End Date</label> - {{vm.scheme.bidCloseDate | momentFormat:'DD-MMMM-YYYY'}}
+                    <input type="text" class="form-control" ng-disabled="!vm.allowEdit()" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.scheme.bidCloseDate" is-open="popup4.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" ng-show="vm.allowEdit()" class="btn btn-default" ng-click="open4()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Payment Period</label>
+                    <ui-select ng-model="vm.scheme.paymentPeriodId" ng-disabled="!vm.allowEdit()">
+                        <ui-select-match placeholder="Select Payment Period">
+                            <span ng-bind="$select.selected.periodInDays"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="t.id as t in (vm.paymentPeriods | filter: $select.search) track by t.periodInDays">
+                            <span ng-bind-html="t.periodInDays | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-9" style="padding-top: 30px">
+                    <input id="btnSave" ng-if="vm.allowEdit()" ng-disabled="newSchemeForm.$invalid" ng-click="vm.save()" class="btn btn-primary btn-flat pull-left" type="submit" value="Save" />
+                    <a href="#/schemes" class="btn btn-default btn-flat pull-left">Go back</a>
+                </div>
+            </div>
+            @*<div class="col-md-6">
+                <div class="form-group">
+                    <label>Active</label>
+                    <input type="checkbox" name="IsActive" ng-model="vm.scheme.isActive" class="checkbox-inline" />
+                </div>
+            </div>*@
+        </div>
+        <div class="row">
+            
+        </div>
+    </div>
+</div>

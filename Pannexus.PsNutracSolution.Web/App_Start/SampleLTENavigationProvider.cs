@@ -47,16 +47,17 @@ namespace Pannexus.PsNutrac.Web
                         )
                 ).AddItem(
                     new MenuItemDefinition(
+                        "Schemes",
+                        L("Schemes"),
+                        url: "#schemes",
+                        icon: "fa fa-tree"
+                     )).AddItem(
+                    new MenuItemDefinition(
                         "Administration",
                         L("Administration"),
                         icon: "fa fa-desktop",
                         requiredPermissionName: PermissionNames.Pages_Admin
                     ).AddItem(new MenuItemDefinition(
-                        "Schemes",
-                        L("Schemes"),
-                        url: "#schemes",
-                        icon: "fa fa-tree"
-                     )).AddItem(new MenuItemDefinition(
                         "Banks",
                         L("Banks"),
                         url: "#banks",

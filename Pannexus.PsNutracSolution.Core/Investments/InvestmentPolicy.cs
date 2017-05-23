@@ -25,6 +25,13 @@ namespace Pannexus.PsNutrac.Investments
 
             CheckSchemeStatus(scheme);
             CheckBidPeriod(scheme);
+            CheckAvailabileUnits(scheme);
+        }
+
+        private void CheckAvailabileUnits(Scheme scheme)
+        {
+            if (scheme.UnsubscribedUnits <= scheme.FloorInvestUnit)
+                throw new UserFriendlyException("We're very sorry!", "No available units for sale anymore. You may try again sometime.");
         }
 
         private void CheckSchemeStatus(Scheme scheme)

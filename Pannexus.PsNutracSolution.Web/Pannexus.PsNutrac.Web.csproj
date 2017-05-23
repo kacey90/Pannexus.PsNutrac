@@ -327,16 +327,17 @@
     <Content Include="App\Main\views\administration\crops\index.js" />
     <Content Include="App\Main\views\administration\payments\paymentPeriodModal.js" />
     <Content Include="App\Main\views\administration\payments\paymentPeriods.js" />
-    <Content Include="App\Main\views\administration\schemes\details.js" />
-    <Content Include="App\Main\views\administration\schemes\index.css">
+    <Content Include="App\Main\views\schemes\details.js" />
+    <Content Include="App\Main\views\schemes\index.css">
       <DependentUpon>index.less</DependentUpon>
     </Content>
-    <Content Include="App\Main\views\administration\schemes\index.js" />
-    <Content Include="App\Main\views\administration\schemes\index.min.css">
+    <Content Include="App\Main\views\schemes\index.js" />
+    <Content Include="App\Main\views\schemes\index.min.css">
       <DependentUpon>index.css</DependentUpon>
     </Content>
-    <Content Include="App\Main\views\administration\schemes\newBidModal.js" />
-    <Content Include="App\Main\views\administration\schemes\newScheme.js" />
+    <Content Include="App\Main\views\schemes\newBid.js" />
+    <Content Include="App\Main\views\schemes\newBidModal.js" />
+    <Content Include="App\Main\views\schemes\newScheme.js" />
     <Content Include="App\Main\views\administration\tenors\createModal.js" />
     <Content Include="App\Main\views\administration\tenors\index.js" />
     <Content Include="App\Main\views\directives\autoFocus.js" />
@@ -490,12 +491,12 @@
     <Content Include="App\Main\views\administration\payments\paymentPeriodModal.cshtml" />
     <Content Include="App\Main\views\administration\tenors\createModal.cshtml" />
     <Content Include="App\Main\views\administration\tenors\index.cshtml" />
-    <Content Include="App\Main\views\administration\schemes\index.cshtml" />
+    <Content Include="App\Main\views\schemes\index.cshtml" />
     <Content Include="App\Main\colors.less" />
-    <Content Include="App\Main\views\administration\schemes\index.less" />
-    <Content Include="App\Main\views\administration\schemes\newScheme.cshtml" />
-    <Content Include="App\Main\views\administration\schemes\detail.cshtml" />
-    <Content Include="App\Main\views\administration\schemes\newBidModal.cshtml" />
+    <Content Include="App\Main\views\schemes\index.less" />
+    <Content Include="App\Main\views\schemes\newScheme.cshtml" />
+    <Content Include="App\Main\views\schemes\detail.cshtml" />
+    <Content Include="App\Main\views\schemes\newBidModal.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

@@ -137,3 +137,4 @@ C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolut
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.EntityFramework\obj\Debug\Pannexus.PsNutrac.EntityFramework.dll
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.EntityFramework\obj\Debug\Pannexus.PsNutrac.EntityFramework.pdb
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.EntityFramework\obj\Debug\Pannexus.PsNutrac.Migrations.changedInvestment.resources
+C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.EntityFramework\obj\Debug\Pannexus.PsNutrac.Migrations.modifiedUser.resources
