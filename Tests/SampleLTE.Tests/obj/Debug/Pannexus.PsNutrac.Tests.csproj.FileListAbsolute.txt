@@ -154,3 +154,5 @@ C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Tests\SampleLTE.Tests\
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Tests\SampleLTE.Tests\obj\Debug\Pannexus.PsNutrac.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Tests\SampleLTE.Tests\obj\Debug\Pannexus.PsNutrac.Tests.dll
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Tests\SampleLTE.Tests\obj\Debug\Pannexus.PsNutrac.Tests.pdb
+C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Tests\SampleLTE.Tests\bin\Debug\PayStack.Net.dll
+C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Tests\SampleLTE.Tests\bin\Debug\XtremeIT.Library.Pins.dll

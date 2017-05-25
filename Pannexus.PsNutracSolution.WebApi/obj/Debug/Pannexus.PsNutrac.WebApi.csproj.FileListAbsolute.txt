@@ -129,3 +129,5 @@ C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolut
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.WebApi\obj\Debug\Pannexus.PsNutrac.WebApi.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.WebApi\obj\Debug\Pannexus.PsNutrac.WebApi.dll
 C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.WebApi\obj\Debug\Pannexus.PsNutrac.WebApi.pdb
+C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.WebApi\bin\Debug\PayStack.Net.dll
+C:\Users\Administrator\Documents\GitHub\Pannexus.PsNutrac\Pannexus.PsNutracSolution.WebApi\bin\Debug\XtremeIT.Library.Pins.dll
