@@ -13,6 +13,8 @@ namespace Pannexus.PsNutrac.Investments
     {
         Task CreateAsync(CreateInvestmentInput input);
 
+        Task InstantPayCreateAsync(CreateInvestmentInput input);
+
         Task UpdateAsync(UpdateInvestmentInput input);
 
         Task DeleteAsync(EntityDto<string> input);

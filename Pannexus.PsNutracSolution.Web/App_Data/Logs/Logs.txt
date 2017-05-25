@@ -491,3 +491,7 @@ System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while
    at Nito.AsyncEx.AsyncContext.Run[TResult](Func`1 action)
    at Abp.BackgroundJobs.BackgroundJobManager.DoWork() in D:\Halil\Github\aspnetboilerplate\src\Abp\BackgroundJobs\BackgroundJobManager.cs:line 73
    at Abp.Threading.BackgroundWorkers.PeriodicBackgroundWorkerBase.Timer_Elapsed(Object sender, EventArgs e) in D:\Halil\Github\aspnetboilerplate\src\Abp\Threading\BackgroundWorkers\PeriodicBackgroundWorkerBase.cs:line 48
+DEBUG 2017-05-25 13:58:20,254 [41   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-05-25 13:58:20,927 [41   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-05-25 13:58:20,950 [41   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-05-25 13:58:20,950 [41   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
